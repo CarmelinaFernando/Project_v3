@@ -1,10 +1,10 @@
 package com.niit.carmel.controller;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,38 +32,63 @@ public class ProductController {
 	@RequestMapping("/admin/product/showProduct")
 
 	public String showProduct(Model model) {
-		model.addAttribute("product", new Product());
+		model.addAttribute("productdata", new Product());
+		model.addAttribute("productlist", prodDao.retrieve());
 		return "addProductForm";
 
 	}
 
 	@RequestMapping("/admin/product/addProduct")
 
-	public String addProduct(@ModelAttribute(value = "product") @Valid Product prod,BindingResult result) 
-	{
-		if (result.hasErrors()){
-		
+	public String addProduct(@Valid @ModelAttribute(value = "productdata") Product product, BindingResult result,
+			Model model,HttpServletRequest request) {
+		if (result.hasErrors()) {
+			//model.addAttribute("productlist", prodDao.retrieve());
 			return "addProductForm";
 		}
 		
-		
-		prodDao.insert(prod);
-		
-		
-		MultipartFile prodImage=prod.getpImage();
-		if (!prodImage.isEmpty()) {
-			Path paths=
-	Paths.get("C:\\Users\\Carmelina Fernando\\git\\Project_v2\\PetStore\\src\\main\\webapp\\resources\\images\\"+ prod.getId()+".png");
-		try {
-			prodImage.transferTo(new File(paths.toString()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		
+
+		prodDao.insert(product);
+
+		MultipartFile file = product.getFile();
+		/*if (!prodImage.isEmpty()) {
+			Path paths = Paths
+					.get("C:/Users/Carmelina Fernando/git/Project_v3/PetStore/src/main/webapp/resources/images/"
+							+ prod.getId() + ".png");
+			System.out.println(paths.toString());
+			try {
+				prodImage.transferTo(new File(paths.toString()));
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+
+		}*/
+		if(file!=null && file.getSize()>0 )
+		{
+			String originalFile=file.getOriginalFilename();
+			String filePath=request.getSession().getServletContext().getRealPath("/resources/images/productimages/");
+			System.out.println(filePath + ""+originalFile);
+			
+			String myFileName= filePath + product.getId()+ ".jpg";
+			try
+			{
+				byte imagebyte[]=product.getFile().getBytes(); // getting the byte form of the image
+				BufferedOutputStream fos=new BufferedOutputStream(new FileOutputStream(myFileName));
+				fos.write(imagebyte);
+				fos.close();
+				
+				
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 		
-		}
-		 
-		return "redirect:/all/product/getAllProduct";
+		
+
+		return "redirect:/admin/product/showProduct";
 	}
 
 	@RequestMapping("/all/product/getAllProduct")
@@ -74,11 +99,12 @@ public class ProductController {
 	}
 
 	@RequestMapping("/admin/product/deleteProduct/{id}")
-	public String deleteProduct(@PathVariable int id)
+	public String deleteProduct(@PathVariable int id,Model model)
 
 	{
+		model.addAttribute("productdata",new Product());
 		prodDao.delete(id);
-		return "redirect:/all/product/getAllProduct";
+		return "addProductForm";
 	}
 
 	@RequestMapping("/admin/product/viewProduct/{id}")
@@ -88,6 +114,15 @@ public class ProductController {
 		Product p = prodDao.getProductData(id);
 		model.addAttribute("product", p);
 		return "viewProduct";
+	}
+	@RequestMapping("/admin/product/editProduct/{id}")
+	public String editProduct(@PathVariable int id,Model model)
+	{
+		Product p = prodDao.getProductData(id);
+		model.addAttribute("productdata",p);
+		model.addAttribute("productlist",prodDao.retrieve());
+		prodDao.updateProduct(id);
+		return "addProductForm";
 	}
 
 }

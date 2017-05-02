@@ -42,17 +42,18 @@ public class Product {
 	@JoinColumn(name="cid")
 	private Category category;
 	@Transient
-    private MultipartFile pImage;
+    private MultipartFile file;
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public int getId() {
 		return id;
 	}
-	public MultipartFile getpImage() {
-		return pImage;
-	}
-	public void setpImage(MultipartFile pImage) {
-		this.pImage = pImage;
-	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

@@ -22,14 +22,18 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Contact Us</a></li>
-				<li><a href="${pageContext.request.contextPath}/jsp/addProductForm.jsp">Product</a></li>
-				<li><a href="#">Supplier</a></li>
+				<c:url value="/all/about" var="about"/>
+				<li><a href="${about }">About Us</a></li>
+				<c:url value="/all/contact" var="contact"/>
+				<li><a href="${contact }">Contact Us</a></li>
+				<c:url value="/all/product" var="product"/>
+				<li><a href="${product}">Product</a></li>
+			
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Category <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Birds</a></li>
+					
+						<li><a href="#"></a></li>
 						<li><a href="#">Fish</a></li>
 						<li><a href="#">Dog</a></li>
 					</ul></li>
