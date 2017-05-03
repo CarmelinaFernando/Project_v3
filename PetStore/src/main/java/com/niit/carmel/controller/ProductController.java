@@ -23,6 +23,7 @@ import com.niit.carmel.model.Product;
 public class ProductController {
 	@Autowired
 	ProductDAO prodDao;
+	
 
 	public ProductController() {
 		System.out.println("Instantiating ProductController");
@@ -95,6 +96,8 @@ public class ProductController {
 	public String displayAllProducts(Model model) {
 		List<Product> prod = prodDao.retrieve();
 		model.addAttribute("productlist", prod);
+		/*List<Category> cat= catDao.getAllCategories();
+		model.addAttribute("categorylist", cat);*/
 		return "productlist";
 	}
 
@@ -116,12 +119,12 @@ public class ProductController {
 		return "viewProduct";
 	}
 	@RequestMapping("/admin/product/editProduct/{id}")
-	public String editProduct(@PathVariable int id,Model model)
+	public String editProduct(@PathVariable int id, @ModelAttribute("productdata") Product product,Model model)
 	{
-		Product p = prodDao.getProductData(id);
-		model.addAttribute("productdata",p);
+		 product = prodDao.getProductData(id);
+		model.addAttribute("productdata",product);
 		model.addAttribute("productlist",prodDao.retrieve());
-		prodDao.updateProduct(id);
+		prodDao.updateProduct(product);
 		return "addProductForm";
 	}
 

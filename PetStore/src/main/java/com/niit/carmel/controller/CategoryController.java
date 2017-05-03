@@ -27,6 +27,7 @@ public class CategoryController
 	public String showCategory(Model model)
 	{
 		model.addAttribute("category",new Category());
+		model.addAttribute("categorylist",categoryDAO.getAllCategories());
 		return "addCategoryForm";
 	}
 	@RequestMapping("/admin/category/addCategory")

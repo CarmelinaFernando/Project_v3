@@ -60,10 +60,10 @@ public class ProductDAOImpl implements ProductDAO {
 
 	}
 
-	public void updateProduct(int id) {
+	public void updateProduct(Product product) {
 		Session session = sessionFactory.openSession();
-		Product prod = (Product) session.get(Product.class, id);
-		session.update(prod);
+		//Product prod = (Product) session.get(Product.class, id);
+		session.update(product);
 		System.out.println("Product Updated");
 	}
 

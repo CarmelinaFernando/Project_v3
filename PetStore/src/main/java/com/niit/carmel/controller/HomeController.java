@@ -18,4 +18,29 @@ public class HomeController {
  			
  			return "index";
  		}
+ 		
+ 		@RequestMapping("/all/about")
+ 		public String about(){
+ 			
+ 			return "aboutUs";
+ 		}
+ 		
+ 		@RequestMapping("/all/contact")
+ 		public String contact(){
+ 			
+ 			return "contactUs";
+ 		}
+ 		
+ 		@RequestMapping("/all/product")
+ 		public String product(){
+ 			
+ 			return " ";
+ 		}
+ 		
+ 		@RequestMapping("/all/category")
+ 		public String category(){
+ 			
+ 			return " ";
+ 		}
+ 		
 }

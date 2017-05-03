@@ -1,4 +1,4 @@
-<%@page isELIgnored="false" %>
+<%@page isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
@@ -22,22 +22,25 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
-				<c:url value="/all/about" var="about"/>
-				<li><a href="${about }">About Us</a></li>
-				<c:url value="/all/contact" var="contact"/>
-				<li><a href="${contact }">Contact Us</a></li>
-				<c:url value="/all/product" var="product"/>
+				<c:url value="/all/about" var="about" />
+				<li><a href="${about}">About Us</a></li>
+				<c:url value="/all/contact" var="contact" />
+				<li><a href="${contact}">Contact Us</a></li>
+				<c:url value="/all/product" var="product" />
 				<li><a href="${product}">Product</a></li>
-			
+				<%-- <c:url value="/all/category" var="category"/>
+				<li><a href="${category}">Category</a></li> --%>
+
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Category <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-					
-						<li><a href="#"></a></li>
-						<li><a href="#">Fish</a></li>
-						<li><a href="#">Dog</a></li>
-					</ul></li>
-				
+						<c:forEach items="${categorylist}" var="c">
+
+							<li><a href="">${c.categoryName}</a></li>
+
+						</c:forEach>
+					</ul>
+					</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
@@ -48,6 +51,6 @@
 		</div>
 	</nav>
 
-	
+
 </body>
 </html>

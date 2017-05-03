@@ -69,14 +69,24 @@ button {
 
 <form action="/action_page.php" style="border:1px solid #ccc">
   <div class="container">
+  
+  <label><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="firstName" required>
+    
+    <label><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="lastName" required>
+    
+    <label><b>Phone Number</b></label>
+    <input type="text" placeholder="Enter Phone Number" name="phoneNumber" required>
+    
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
 
     <label><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" required>
 
-    <label><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <label><b>ReEnter Password</b></label>
+    <input type="password" placeholder="ReEnter Password" name="password-repeat" required>
     <input type="checkbox" checked="checked"> Remember me
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
