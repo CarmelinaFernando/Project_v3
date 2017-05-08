@@ -26,7 +26,7 @@ public class CustomerDAOImpl implements CustomerDAO
 		try{
 		Session session= sessionFactory.openSession();
 		logger.debug("============================================");
-		customer.getUsers().setEnabled(true);
+		/*customer.getUsers().setEnabled(true);
 		
 		// Assignment
 				String username = customer.getUsers().getUsername();
@@ -45,7 +45,7 @@ public class CustomerDAOImpl implements CustomerDAO
 
 				cart.setCustomer(customer);// update cart set customer_id=? ,
 											// grandtotal=? where cart_id=?
-
+*/
 				session.save(customer);
 
 				logger.debug("==========================================================================");

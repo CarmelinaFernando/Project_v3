@@ -21,9 +21,9 @@ public class CustomerTestCase {
 	@Autowired
 	static CustomerDAO customerDAO;
 	
-	@Autowired
+	/*@Autowired
 	static Cart cart;
-	
+	*/
 
 	@BeforeClass 
 	public static void initailize()
@@ -35,7 +35,7 @@ public class CustomerTestCase {
 		
 		customerDAO=(CustomerDAO) context.getBean("customerDAO");
 		 customer=context.getBean(Customer.class);
-		 cart=context.getBean(Cart.class);
+		 /*cart=context.getBean(Cart.class);*/
 				
 	}
 	
@@ -47,11 +47,11 @@ public class CustomerTestCase {
 		customer.setLastName("Fernando");
 		customer.setEmail("fernando_carmelina@yahoo.in");
 		customer.setPhoneNumber("9742147395");
-		cart.setId(1);
+		/*cart.setId(1);
 		cart.setGrandTotal(10000);
-		
-		customer.setCart(cart);
-	
+		*/
+		/*customer.setCart(cart);
+	*/
 		
 		boolean flag=customerDAO.saveCustomer(customer);
 		assertEquals("",true,flag);

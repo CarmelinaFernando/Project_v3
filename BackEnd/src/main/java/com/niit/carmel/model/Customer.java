@@ -1,6 +1,7 @@
 package com.niit.carmel.model;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -48,7 +49,7 @@ public class Customer
 	@Valid
 	private Users users;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	/*@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "billlingaddress_id")
 	@Valid
 	private BillingAddress billingAddress;
@@ -56,7 +57,7 @@ public class Customer
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "shippingaddress_id")
 	@Valid
-	private ShippingAddress shippingAddress;
+	private ShippingAddress shippingAddress;*/
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cart_id")
@@ -68,7 +69,7 @@ public class Customer
 	public void setUsers(Users users) {
 		this.users = users;
 	}
-	public BillingAddress getBillingAddress() {
+	/*public BillingAddress getBillingAddress() {
 		return billingAddress;
 	}
 	public void setBillingAddress(BillingAddress billingAddress) {
@@ -79,7 +80,7 @@ public class Customer
 	}
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
-	}
+	}*/
 	public Cart getCart() {
 		return cart;
 	}
@@ -114,9 +115,9 @@ public class Customer
 	}
 	
 	
-	@Override
+	/*@Override
 	public String toString()
 	{
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber +",users=" + users + ",shippingAddress=" + shippingAddress + ",billingAddress=" + billingAddress+ ",cart=" + cart + ",]";
-	}
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber +",users=" + users + ",shippingAddress=" + shippingAddress + ",billingAddress=" + billingAddress+ ",cart=" + cart + + "]";
+	}*/
 }
