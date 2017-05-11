@@ -19,8 +19,6 @@
 <title>Sign Up Form</title>
 </head>
 
-
-<body>
 <style>
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -78,25 +76,120 @@ button {
 				</c:url>
 
 				<form:form method="POST" action="${url}" modelAttribute="customer">
-    <label><b>First Name</b></label>
-    <input type="text" placeholder="Enter First Name" name="firstName" required>
+    <div class="form-group">
+						<form:label path="firstName">First Name</form:label>
+						<form:input path="firstName" class="form-control" />
+						<form:errors path="firstName" cssClass="error"></form:errors>
+					</div>
+   <div class="form-group">
+						<form:label path="lastName">Last Name</form:label>
+						<form:input path="lastName" class="form-control" />
+						<form:errors path="lastName" cssClass="error"></form:errors>
+					</div>
+    <div class="form-group">
+						<form:label path="email">Email Id</form:label>
+						<form:input path="email" class="form-control" />
+						<form:errors path="email" cssClass="error"></form:errors>
+					</div>
+    <div class="form-group">
+						<form:label path="phoneNumber">Phone Number</form:label>
+						<form:input path="phoneNumber" class="form-control" />
+						<form:errors path="phoneNumber" cssClass="error"></form:errors>
+					</div>
+ <div class="form-group">
+						<form:label path="users.username">Username</form:label>
+						<form:input path="users.username" class="form-control" />
+						<form:errors path="users.username" cssClass="error"></form:errors>
+					</div>
+<div class="form-group">
+						<form:label path="users.password">Password</form:label>
+						<form:input path="users.password" type="password" class="form-control" />
+						<form:errors path="users.password" cssClass="error"></form:errors>
+					</div>
+					
+					
+					
+					<h3>Billing Address</h3>
+					
+					<div class="form-group">
+					<form:label path="billingAddress.apartmentNumber">Apartment Number</form:label>
+					<form:input path="billingAddress.apartmentNumber" class="form-control" />
+					<form:errors path="billingAddress.apartmentNumber" cssClass="error"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="billingAddress.streetName">Street Name</form:label>
+					<form:input path="billingAddress.streetName" class="form-control" />
+					<form:errors path="billingAddress.streetName" cssClass="error"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="billingAddress.city">City</form:label>
+					<form:input path="billingAddress.city" class="form-control" />
+					<form:errors path="billingAddress.city" cssClass="error"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="billingAddress.state">State</form:label>
+					<form:input path="billingAddress.state" class="form-control" />
+					<form:errors path="billingAddress.state" cssClass="error"></form:errors>
+				</div>
+				
+					<div class="form-group">
+					<form:label path="billingAddress.country">Country</form:label>
+					<form:input path="billingAddress.country" class="form-control" />
+					<form:errors path="billingAddress.country" cssClass="error"></form:errors>
+				</div>
+				
+					<div class="form-group">
+					<form:label path="billingAddress.zipcode">Zip Code</form:label>
+					<form:input path="billingAddress.zipcode" class="form-control" />
+					<form:errors path="billingAddress.zipcode" cssClass="error"></form:errors>
+				</div>
+				
+				
+				<h3>Shipping Address</h3>
+					
+					<div class="form-group">
+					<form:label path="shippingAddress.apartmentNumber">Apartment Number</form:label>
+					<form:input path="shippingAddress.apartmentNumber" class="form-control" />
+					<form:errors path="shippingAddress.apartmentNumber" cssClass="error"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="shippingAddress.streetName">Street Name</form:label>
+					<form:input path="shippingAddress.streetName" class="form-control" />
+					<form:errors path="shippingAddress.streetName" cssClass="error"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="shippingAddress.city">City</form:label>
+					<form:input path="shippingAddress.city" class="form-control" />
+					<form:errors path="shippingAddress.city" cssClass="error"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="shippingAddress.state">State</form:label>
+					<form:input path="shippingAddress.state" class="form-control" />
+					<form:errors path="shippingAddress.state" cssClass="error"></form:errors>
+				</div>
+				
+					<div class="form-group">
+					<form:label path="shippingAddress.country">Country</form:label>
+					<form:input path="shippingAddress.country" class="form-control" />
+					<form:errors path="shippingAddress.country" cssClass="error"></form:errors>
+				</div>
+				
+					<div class="form-group">
+					<form:label path="shippingAddress.zipcode">Zip Code</form:label>
+					<form:input path="shippingAddress.zipcode" class="form-control" />
+					<form:errors path="shippingAddress.zipcode" cssClass="error"></form:errors>
+				</div>
+				
+				
+					
 
-    <label><b>Last Name</b></label>
-    <input type="text" placeholder="Enter Last Name" name="lastName" required>
-    
-    <label><b>Email Id</b></label>
-    <input type="text" placeholder="Enter Email Id" name="email" required>
-    
-    <label><b>Phone Number</b></label>
-    <input type="text" placeholder="Enter Phone Number" name="phoneNumber" required>
-    
-    
-
-   <!--  <label><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-    <input type="checkbox" checked="checked"> Remember me
-    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
- -->
+  
     <div class="clearfix">
       <button type="button" class="cancelbtn">Cancel</button>
       <button type="submit" class="signupbtn">Sign Up</button>

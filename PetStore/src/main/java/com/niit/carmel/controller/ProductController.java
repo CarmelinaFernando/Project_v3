@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.niit.carmel.dao.CategoryDAO;
 import com.niit.carmel.dao.ProductDAO;
 import com.niit.carmel.model.Product;
 
@@ -24,6 +25,8 @@ public class ProductController {
 	@Autowired
 	ProductDAO prodDao;
 	
+	@Autowired
+	CategoryDAO categoryDAO;
 
 	public ProductController() {
 		System.out.println("Instantiating ProductController");
@@ -35,6 +38,7 @@ public class ProductController {
 	public String showProduct(Model model) {
 		model.addAttribute("productdata", new Product());
 		model.addAttribute("productlist", prodDao.retrieve());
+		model.addAttribute("categories", categoryDAO.getAllCategories());
 		return "addProductForm";
 
 	}
@@ -115,8 +119,8 @@ public class ProductController {
 
 	{
 		Product p = prodDao.getProductData(id);
-		model.addAttribute("product", p);
-		return "viewProduct";
+		model.addAttribute("productdata", p);
+		return "singleProductPage";
 	}
 	@RequestMapping("/admin/product/editProduct/{id}")
 	public String editProduct(@PathVariable int id, @ModelAttribute("productdata") Product product,Model model)

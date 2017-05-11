@@ -46,6 +46,17 @@
 						<form:input path="quantity" class="form-control" />
 						<form:errors path="quantity" cssClass="error"></form:errors>
 					</div>
+					<div class="form-group">
+					<label for="category">Category</label>
+					<!-- List<Category> c =model.getAttribute("categories");
+out.println(c.id)
+out.println(c.categoryDetails);
+ -->
+					<c:forEach var="c" items="${categories}">
+						<form:radiobutton path="category.id" value="${c.id}" />${c.categoryName }
+</c:forEach>
+					<%-- <form:errors path="mfg" cssStyle="color:#ff0000"></form:errors> --%>
+				</div>
 
 					<div class="form-group">
 						<form:label path="file">Picture</form:label>
