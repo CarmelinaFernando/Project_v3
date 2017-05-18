@@ -26,7 +26,7 @@
 				</thead>
 				<c:forEach items="${productlist}" var="p">
 					<tr>
-					    <td>${p.pImage}</td>
+					    <td>${p.file}</td>
 						<td>${p.id}</td>
 						<td>${p.name}</td>
 						<td>${p.price}</td>

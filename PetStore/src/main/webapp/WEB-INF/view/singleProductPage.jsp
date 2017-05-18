@@ -8,7 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%-- <table class="table">
+	 <table class="table">
+	        <tr>
+				<td>Product Id :</td>
+				<td>${productdata.id }</td>
+			</tr>
 			<tr>
 				<td>Product Name :</td>
 				<td>${productdata.name }</td>
@@ -25,10 +29,10 @@
 				<td>Category Name</td>
 				<td>${productdata.category.categoryName}</td>
 			</tr>
-		</table>  --%>
+	 
 		
 		
-		
+		<%-- 
 		<div class="container-wrapper">
 		<div class="container">
 			<table class="table table-striped">
@@ -53,15 +57,23 @@
 						<td>${productdata.description}</td>
 						<td>${productdata.category.categoryName}</td>
 						
-					</tr>
-
-
+					</tr> --%>
+					
+					<tr>
+			<td>
+			</td>
+			
+			<td>
+			<c:url value="/cart/getCartId/" var="cart"></c:url>
+			<a href="${cart}" ng-click="addToCart(${productdata.id})"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+			<c:url value="/" var="home"></c:url>
+			<a href="${home}" ng-click="back"><span class="glyphicon glyphicon-share-alt"></span></a>
+			</td>
+			</tr>
+			
 			</table>
 
-
-		</div>
-
-	</div>
+	
 <%-- ${productdata.id } 
 ${productdata.name }
 ${productdata.price }

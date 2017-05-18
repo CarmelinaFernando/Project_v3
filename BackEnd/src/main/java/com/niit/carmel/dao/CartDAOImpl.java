@@ -1,5 +1,7 @@
 package com.niit.carmel.dao;
 
+import java.io.IOException;
+
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -22,5 +24,13 @@ public class CartDAOImpl implements CartDAO
 		session.close();
 		return cart;
 	}
-
+	
+	public Cart validate(int cartId) throws IOException{
+		Cart cart=getCart(cartId);
+		if(cart.getCartItems().size()==0 || cart==null)
+			throw new IOException(cartId +"");
+		return cart;
+		
+		
+	}
 }
