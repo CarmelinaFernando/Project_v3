@@ -3,9 +3,7 @@ package com.niit.carmel.controller;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -45,7 +43,7 @@ public class HomeController {
  			return " ";
  		}
  		
- 		@RequestMapping("/login")
+ 		/*@RequestMapping("/login")
  		public String login(@RequestParam (value="error",required=false)String error,@RequestParam(value="logout",required=false)String logout,Model model){
  			if(error!=null)
  				model.addAttribute("error","Invalid Username or Password.. Please enter again");
@@ -53,6 +51,6 @@ public class HomeController {
  				model.addAttribute("logout", "Logged out successfully");
  			return "login";
  			
- 		}
+ 		}*/
  		
 }
